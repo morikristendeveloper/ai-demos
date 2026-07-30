@@ -140,11 +140,11 @@
   .tmpl-beforeafter .ba-miss { margin-top:14px; font-size:.86rem; line-height:1.5; color:#8a4a5e; }
   .tmpl-beforeafter .ba-miss b { color:#d6336c; }
   @media (max-width:640px) { .tmpl-beforeafter .ba { grid-template-columns:1fr; } }
-:root { --brand:#d5ae95; --brand-2:#daa57c; }
-.chips button { background:#fcf9f7; border-color:#f3e8e1; }
-.chips button:hover { background:#f8f2ee; }
-.inrow input { border-color:#f3e8e1; }
-@keyframes glow { 50% { box-shadow:0 0 0 4px rgba(213,174,149,.28); border-color:var(--brand-2); } }
+:root { --brand:#ddb59c; --brand-2:#daa57c; }
+.chips button { background:#fcf9f7; border-color:#f5eae3; }
+.chips button:hover { background:#faf3ef; }
+.inrow input { border-color:#f5eae3; }
+@keyframes glow { 50% { box-shadow:0 0 0 4px rgba(221,181,156,.28); border-color:var(--brand-2); } }
 .chat, .chips, .inrow { background:#fbf7f2; }
 body { background:linear-gradient(160deg,#f7f1ea,#efe6da); }
 .phone { border-radius:18px; } .msg { border-radius:12px; }
@@ -202,7 +202,7 @@ body { font-family:Georgia,"Times New Roman",serif; }
   расписанию и записывает клиентов без участия администратора.</footer>
 </div>
 <script>
-var S = {"greeting": "Здравствуйте! Я ИИ-менеджер «Buta Spa» (Салон красоты, Челябинск). Отвечаю мгновенно в любое время: подскажу по услугам и ценам и сразу запишу. Чем помочь?", "qa": [{"q": "Здравствуйте! Можно записаться на сегодня вечером?", "a": "Конечно. Есть свободное время, например, в 18:30 и 19:15 — что удобнее? Для записи хватит имени и телефона, займёт минуту."}, {"q": "А сколько это будет стоить?", "a": "Зависит от услуги — пришлю прайс прямо сюда в чат и сориентирую по вашему случаю. В рабочей версии я мгновенно отвечаю по реальному прайсу «Buta Spa»."}, {"q": "Где вы находитесь и до скольки работаете?", "a": "Мы находимся в городе Челябинск, ул.Братьев Кашириных, 140 :)"}, {"q": "Мне нужно перенести запись, это возможно?", "a": "Без проблем. Назовите имя или телефон — найду вашу запись и предложу свободные окна. Перенос занимает меньше минуты, даже ночью."}], "closing": "Сейчас в нише «Салон красоты» клиент пишет сразу в 3–5 салонов и записывается туда, где ответили первыми. Так клиенты «Buta Spa» получают ответ за секунды — днём, ночью и в выходные. В рабочей версии я отвечаю по вашим реальным ценам и расписанию.", "theme": {"accent": "#d5ae95", "accent2": "#daa57c", "bg": "#f7f1ea", "bg2": "#efe6da", "chat_bg": "#fbf7f2", "radius": 12, "font": "serif"}, "logo": "https://butaspa.ru/upload/CPriority/4c9/frx3dd4u933kwr4c6mo5klji2251s4zn.png", "template": "phone"};
+var S = {"greeting": "Здравствуйте! Я ИИ-менеджер «Buta Spa» (Салон красоты, Челябинск). Отвечаю мгновенно в любое время: подскажу по услугам и ценам и сразу запишу. Чем помочь?", "qa": [{"q": "Здравствуйте! Можно записаться на сегодня вечером?", "a": "Конечно. Есть свободное время, например, в 18:30 и 19:15 — что удобнее? Для записи хватит имени и телефона, займёт минуту."}, {"q": "А сколько это будет стоить?", "a": "Зависит от услуги — пришлю прайс прямо сюда в чат и сориентирую по вашему случаю. В рабочей версии я мгновенно отвечаю по реальному прайсу «Buta Spa»."}, {"q": "Где вы находитесь и до скольки работаете?", "a": "Мы находимся в городе Челябинск, ул.Братьев Кашириных, 140 :)"}, {"q": "Мне нужно перенести запись, это возможно?", "a": "Без проблем. Назовите имя или телефон — найду вашу запись и предложу свободные окна. Перенос занимает меньше минуты, даже ночью."}], "closing": "Сейчас в нише «Салон красоты» клиент пишет сразу в 3–5 салонов и записывается туда, где ответили первыми. Так клиенты «Buta Spa» получают ответ за секунды — днём, ночью и в выходные. В рабочей версии я отвечаю по вашим реальным ценам и расписанию.", "theme": {"accent": "#ddb59c", "accent2": "#daa57c", "bg": "#f7f1ea", "bg2": "#efe6da", "chat_bg": "#fbf7f2", "radius": 12, "font": "serif"}, "logo": "https://butaspa.ru/upload/CPriority/4c9/frx3dd4u933kwr4c6mo5klji2251s4zn.png", "template": "phone"};
 var chat = document.getElementById("chat"), chips = document.getElementById("chips");
 chat.textContent = "";  // JS работает — статичную запись сменяет интерактив
 function bubble(text, who) {
