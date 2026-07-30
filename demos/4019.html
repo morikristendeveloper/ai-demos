@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ИИ-менеджер для «Тату салон &quot;ТАТУ ТАЙМС&quot;»</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="ИИ-менеджер для «Тату салон &quot;ТАТУ ТАЙМС&quot;»">
+<meta property="og:description" content="Челябинск • Тату салон. Посмотрите, как ИИ-менеджер отвечает вашим клиентам за секунды 24/7 и доводит до записи.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ИИ-менеджер для «Тату салон &quot;ТАТУ ТАЙМС&quot;»">
+<meta name="twitter:description" content="Челябинск • Тату салон. Посмотрите, как ИИ-менеджер отвечает вашим клиентам за секунды 24/7 и доводит до записи.">
+<meta property="og:image" content="https://empiretattoo.ru/local/templates/empiretattoo/img/ogimage.jpg">
+<meta name="twitter:image" content="https://empiretattoo.ru/local/templates/empiretattoo/img/ogimage.jpg">
+<meta property="og:url" content="https://morikristendeveloper.github.io/ai-demos/demos/4019.html">
+<style>
+  :root { --brand:#7c3aed; --brand-2:#a855f7; --ink:#1f2333; --mut:#7a8098; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+         background:linear-gradient(160deg,#f6f4ff 0%,#eef1fb 60%,#f9f6ff 100%);
+         color:var(--ink); min-height:100vh; }
+  .page { max-width:520px; margin:0 auto; padding:28px 16px 40px; }
+  header h1 { font-size:1.25rem; margin:0 0 4px; line-height:1.3; }
+  .sub { color:var(--mut); font-size:.9rem; margin:0 0 18px; }
+  .phone { background:#fff; border:1px solid #e4e2f2; border-radius:22px;
+           box-shadow:0 18px 50px rgba(84,63,158,.14); overflow:hidden; }
+  .ph-top { display:flex; gap:10px; align-items:center; padding:12px 16px;
+            background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; }
+  .ava { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.22);
+         display:grid; place-items:center; font-weight:700; flex:none; }
+  .ph-name { font-weight:600; font-size:.95rem; }
+  .ph-status { font-size:.75rem; opacity:.85; }
+  /* Формат «мессенджер»: чат во весь блок, без рамки-телефона — как открытый диалог */
+  .tmpl-messenger .phone { border:none; border-radius:0; box-shadow:none; }
+  .tmpl-messenger .chat { min-height:60vh; max-height:66vh; }
+  .tmpl-messenger header { margin-bottom:10px; }
+  .tmpl-messenger header h1 { font-size:1.08rem; }
+  .ph-dot { display:inline-block; width:7px; height:7px; border-radius:50%;
+            background:#46e08a; margin-right:5px; vertical-align:middle;
+            box-shadow:0 0 0 0 rgba(70,224,138,.6); animation:pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 6px rgba(70,224,138,0); }
+                     100% { box-shadow:0 0 0 0 rgba(70,224,138,0); } }
+  .chat { padding:16px 14px; min-height:280px; max-height:52vh; overflow-y:auto;
+          display:flex; flex-direction:column; gap:8px; background:#fafaff; }
+  .msg { max-width:84%; padding:9px 13px; border-radius:16px; font-size:.92rem;
+         line-height:1.45; white-space:pre-wrap; animation:pop .25s ease; }
+  .ai { background:#fff; border:1px solid #e7e5f4; border-bottom-left-radius:6px;
+        align-self:flex-start; }
+  .me { background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff;
+        border-bottom-right-radius:6px; align-self:flex-end; }
+  .typing { display:inline-flex; gap:4px; }
+  .typing i { width:6px; height:6px; border-radius:50%; background:#b6aede;
+              animation:blink 1s infinite; }
+  .typing i:nth-child(2) { animation-delay:.2s; }
+  .typing i:nth-child(3) { animation-delay:.4s; }
+  @keyframes blink { 0%,80%,100% { opacity:.25; } 40% { opacity:1; } }
+  @keyframes pop { from { opacity:0; transform:translateY(6px); } }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; padding:12px 14px 16px; background:#fff;
+           border-top:1px solid #eeecf8; }
+  .chips button { font:inherit; font-size:.84rem; color:var(--brand); background:#f4f0ff;
+                  border:1px solid #ddd2f7; border-radius:999px; padding:7px 13px;
+                  cursor:pointer; transition:.15s; text-align:left; }
+  .chips button:hover { background:#e9e0ff; }
+  @keyframes glow { 50% { box-shadow:0 0 0 4px rgba(124,58,237,.28);
+                          border-color:var(--brand-2); } }
+  .chips button.glow { animation:glow .8s ease 3; }
+  .hint { width:100%; color:var(--mut); font-size:.76rem; margin:0; }
+  .inrow { display:flex; gap:8px; padding:10px 14px 14px; background:#fff;
+           border-top:1px solid #eeecf8; }
+  .inrow input { flex:1; min-width:0; font:inherit; font-size:.9rem; color:var(--ink);
+                 padding:9px 14px; border:1px solid #ddd2f7; border-radius:999px;
+                 outline:none; background:#fafaff; }
+  .inrow input:focus { border-color:var(--brand-2); background:#fff; }
+  .inrow button { font:inherit; flex:none; width:40px; height:40px; border:none;
+                  border-radius:50%; cursor:pointer; color:#fff;
+                  background:linear-gradient(135deg,var(--brand),var(--brand-2)); }
+  footer { color:var(--mut); font-size:.8rem; line-height:1.5; margin-top:16px; }
+  /* Микролендинг: «сколько теряете сейчас» (из аудита) над демо-чатом */
+  .loss { background:#fff; border:1px solid #ece9f5; border-left:4px solid var(--brand);
+          border-radius:14px; padding:15px 18px; margin:0 0 16px;
+          box-shadow:0 10px 30px rgba(84,63,158,.06); }
+  .loss-lbl { display:block; color:var(--mut); font-size:.8rem; }
+  .loss-big { display:block; font-size:1.5rem; font-weight:800; line-height:1.15;
+              color:var(--brand); margin:2px 0; font-variant-numeric:tabular-nums;
+              letter-spacing:-.01em; }
+  .loss-note { display:block; color:var(--mut); font-size:.8rem; }
+  .loss-list { list-style:none; margin:12px 0 0; padding:12px 0 0;
+               border-top:1px solid #f2eef5; display:flex; flex-direction:column; gap:7px; }
+  .loss-list li { font-size:.86rem; line-height:1.4; }
+  /* Шаблон «виджет на сайте»: чат пришвартован к макету сайта клиента */
+  .tmpl-widget .browser { background:#fff; border:1px solid #e4e2f2; border-radius:16px;
+          overflow:hidden; box-shadow:0 18px 50px rgba(84,63,158,.14); }
+  .tmpl-widget .bar { display:flex; align-items:center; gap:6px; padding:9px 12px;
+          background:#f3f2f8; border-bottom:1px solid #e9e7f2; }
+  .tmpl-widget .dot { width:10px; height:10px; border-radius:50%; background:#d7d4e4; flex:none; }
+  .tmpl-widget .url { margin-left:8px; min-width:0; font-size:.75rem; color:var(--mut);
+          background:#fff; border:1px solid #e6e4f0; border-radius:8px; padding:3px 10px;
+          overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .tmpl-widget .viewport { position:relative; min-height:540px; padding:22px;
+          background:linear-gradient(160deg,#faf9ff,#eef0fb); }
+  .tmpl-widget .site-hero { max-width:62%; }
+  .tmpl-widget .site-logo { width:46px; height:46px; border-radius:12px; color:#fff;
+          display:grid; place-items:center; font-weight:800; font-size:1.2rem;
+          background:linear-gradient(135deg,var(--brand),var(--brand-2)); }
+  .tmpl-widget .site-name { font-size:1.3rem; font-weight:800; margin:12px 0 4px; }
+  .tmpl-widget .site-tag { color:var(--mut); font-size:.9rem; }
+  .tmpl-widget .site-btns { margin-top:16px; display:flex; gap:8px; }
+  .tmpl-widget .site-btns span { height:34px; width:112px; border-radius:9px;
+          background:linear-gradient(135deg,var(--brand),var(--brand-2)); opacity:.92; }
+  .tmpl-widget .site-btns span:last-child { background:#e7e4f3; }
+  .tmpl-widget .phone { position:absolute; right:18px; bottom:18px; width:344px;
+          max-width:calc(100% - 36px); box-shadow:0 24px 60px rgba(84,63,158,.30); }
+  @media (max-width:560px) {
+    .tmpl-widget .site-hero { max-width:100%; }
+    .tmpl-widget .phone { position:static; width:auto; margin-top:18px; }
+  }
+  /* Анимированный градиент-фон (включается темой; сам сдвиг — в _theme_css) */
+  @keyframes auroraShift { 0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
+  /* Плашка «собрано для» — сигнал, что демо единичное, а не шаблон */
+  .made-for { display:inline-flex; align-items:center; gap:6px; margin:0 0 16px;
+              padding:5px 12px; font-size:.76rem; color:var(--brand);
+              background:rgba(124,58,237,.08); border:1px solid rgba(124,58,237,.18);
+              border-radius:999px; font-weight:600; }
+  /* Формат «Было / стало»: слева «сейчас», справа тот же живой чат «с ИИ» */
+  .page.tmpl-beforeafter { max-width:880px; }
+  .tmpl-beforeafter .ba { display:grid; grid-template-columns:1fr 1fr; gap:16px;
+          align-items:start; }
+  .tmpl-beforeafter .ba-tag { display:inline-flex; align-items:center; gap:6px;
+          font-size:.78rem; font-weight:700; padding:4px 11px; border-radius:999px;
+          margin-bottom:10px; }
+  .tmpl-beforeafter .ba-tag.bad { color:#d6336c; background:rgba(214,51,108,.1); }
+  .tmpl-beforeafter .ba-tag.ok { color:#12805c; background:rgba(18,128,92,.1); }
+  .tmpl-beforeafter .ba-before { background:#fff; border:1px solid #f0dae2;
+          border-radius:18px; padding:16px 16px 18px; box-shadow:0 12px 34px rgba(150,40,90,.06); }
+  .tmpl-beforeafter .ba-msg { max-width:88%; padding:9px 13px; border-radius:16px;
+          font-size:.9rem; line-height:1.45; background:#f1f0f5; color:#3a3a44;
+          border-bottom-left-radius:6px; }
+  .tmpl-beforeafter .ba-time { display:block; font-size:.7rem; color:#9aa0b5; margin:6px 2px 0; }
+  .tmpl-beforeafter .ba-miss { margin-top:14px; font-size:.86rem; line-height:1.5; color:#8a4a5e; }
+  .tmpl-beforeafter .ba-miss b { color:#d6336c; }
+  @media (max-width:640px) { .tmpl-beforeafter .ba { grid-template-columns:1fr; } }
+:root { --brand:#d9082b; --brand-2:#d11010; }
+.chips button { background:#fcebee; border-color:#f4bac4; }
+.chips button:hover { background:#f9d7dd; }
+.inrow input { border-color:#f4bac4; }
+@keyframes glow { 50% { box-shadow:0 0 0 4px rgba(217,8,43,.28); border-color:var(--brand-2); } }
+.chat, .chips, .inrow { background:#fffaf7; }
+body { background:linear-gradient(160deg,#fff3ef,#ffe9e0); }
+.phone { border-radius:26px; } .msg { border-radius:20px; }
+.ai { border-bottom-left-radius:6px; } .me { border-bottom-right-radius:6px; }
+.chips button, .inrow input { border-radius:26px; }
+body { font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Так ИИ-менеджер отвечает клиентам «Тату салон &quot;ТАТУ ТАЙМС&quot;»</h1>
+    <p class="sub">Челябинск • Тату салон • отвечает за секунды, круглосуточно</p>
+<span class="made-for">✨ Собрано специально для «Тату салон &quot;ТАТУ ТАЙМС&quot;» · 30.07.2026</span>
+  </header>
+
+
+  <div class="phone">
+    <div class="ph-top">
+      <div class="ava">Т</div>
+      <div><div class="ph-name">Тату салон &quot;ТАТУ ТАЙМС&quot;</div>
+      <div class="ph-status"><span class="ph-dot"></span><span class="ph-txt">онлайн • ИИ-менеджер</span></div></div>
+    </div>
+    <div class="chat" id="chat">
+      <!-- Статичная запись диалога: видна в просмотрщиках без JavaScript
+           (предпросмотр Telegram, QuickLook); в браузере JS заменяет её
+           интерактивной версией с «печатанием» -->
+      <noscript><style>.inrow,.hint{display:none}</style>
+      <div class="msg ai">👋 Это запись диалога ИИ-менеджера. Чтобы пообщаться
+      с ним вживую, откройте файл в браузере (в Telegram: ⋮ → «Открыть в…»).</div>
+      </noscript>
+<div class="msg ai">Здравствуйте! Я ИИ-менеджер «Тату салон &quot;ТАТУ ТАЙМС&quot;» (Челябинск, Тату салон). Отвечаю мгновенно в любое время: подскажу по услугам и ценам и сразу запишу. Чем помочь?</div>
+<div class="msg me">Здравствуйте! Можно записаться на сегодня вечером?</div>
+<div class="msg ai">Конечно. Есть свободное время, например, в 18:30 и 19:15 — что удобнее? Для записи хватит имени и телефона, займёт минуту.</div>
+<div class="msg me">А сколько это будет стоить?</div>
+<div class="msg ai">Зависит от услуги — пришлю прайс прямо сюда в чат и сориентирую по вашему случаю. В рабочей версии я мгновенно отвечаю по реальному прайсу «Тату салон &quot;ТАТУ ТАЙМС&quot;».</div>
+<div class="msg me">Где вы находитесь и до скольки работаете?</div>
+<div class="msg ai">Мы в городе Челябинск — отправлю точный адрес и маршрут. Подсказать, как удобнее добраться, и заодно забронировать время?</div>
+<div class="msg me">Мне нужно перенести запись, это возможно?</div>
+<div class="msg ai">Без проблем. Назовите имя или телефон — найду вашу запись и предложу свободные окна. Перенос занимает меньше минуты, даже ночью.</div>
+<div class="msg me">Во сколько вы работаете?</div>
+<div class="msg ai">Мы работаем ежедневно с 10:00 до 20:00</div>
+<div class="msg ai">Так клиенты «Тату салон &quot;ТАТУ ТАЙМС&quot;» получают ответ за секунды — днём, ночью и в выходные. В рабочей версии я отвечаю по вашим реальным ценам и расписанию.</div>
+    </div>
+    <div class="chips" id="chips">
+      <p class="hint">👇 Нажмите вопрос — так его задал бы ваш клиент</p>
+    </div>
+    <div class="inrow">
+      <input id="inp" type="text" placeholder="Или напишите свой вопрос…"
+             maxlength="200" autocomplete="off">
+      <button id="send" title="Отправить">➤</button>
+    </div>
+  </div>
+
+  <footer>Это интерактивная демонстрация, собранная по открытым данным о компании.
+  В рабочей версии ИИ-менеджер отвечает по вашим реальным услугам, ценам и
+  расписанию и записывает клиентов без участия администратора.</footer>
+</div>
+<script>
+var S = {"greeting": "Здравствуйте! Я ИИ-менеджер «Тату салон \"ТАТУ ТАЙМС\"» (Челябинск, Тату салон). Отвечаю мгновенно в любое время: подскажу по услугам и ценам и сразу запишу. Чем помочь?", "qa": [{"q": "Здравствуйте! Можно записаться на сегодня вечером?", "a": "Конечно. Есть свободное время, например, в 18:30 и 19:15 — что удобнее? Для записи хватит имени и телефона, займёт минуту."}, {"q": "А сколько это будет стоить?", "a": "Зависит от услуги — пришлю прайс прямо сюда в чат и сориентирую по вашему случаю. В рабочей версии я мгновенно отвечаю по реальному прайсу «Тату салон \"ТАТУ ТАЙМС\"»."}, {"q": "Где вы находитесь и до скольки работаете?", "a": "Мы в городе Челябинск — отправлю точный адрес и маршрут. Подсказать, как удобнее добраться, и заодно забронировать время?"}, {"q": "Мне нужно перенести запись, это возможно?", "a": "Без проблем. Назовите имя или телефон — найду вашу запись и предложу свободные окна. Перенос занимает меньше минуты, даже ночью."}, {"q": "Во сколько вы работаете?", "a": "Мы работаем ежедневно с 10:00 до 20:00"}], "closing": "Так клиенты «Тату салон \"ТАТУ ТАЙМС\"» получают ответ за секунды — днём, ночью и в выходные. В рабочей версии я отвечаю по вашим реальным ценам и расписанию.", "theme": {"accent": "#d9082b", "accent2": "#d11010", "bg": "#fff3ef", "bg2": "#ffe9e0", "chat_bg": "#fffaf7", "radius": 20, "font": "rounded"}, "logo": "https://empiretattoo.ru/local/templates/empiretattoo/img/ogimage.jpg", "template": "phone", "services": [{"name": "Посмотреть все услуги Сделать тату", "price": "1 500 ₽"}, {"name": "Исправление татуировок", "price": "3 500 ₽"}, {"name": "Корректировка тату", "price": "3 500 ₽"}, {"name": "Небольшие татуировки", "price": "1 500 ₽"}, {"name": "Пирсинг", "price": "1 000 ₽"}, {"name": "Перманентный макияж", "price": "5 000 ₽"}]};
+var chat = document.getElementById("chat"), chips = document.getElementById("chips");
+chat.textContent = "";  // JS работает — статичную запись сменяет интерактив
+function bubble(text, who) {
+  var d = document.createElement("div");
+  d.className = "msg " + who; d.textContent = text;
+  chat.appendChild(d); chat.scrollTop = chat.scrollHeight;
+}
+function aiSay(text, cb) {
+  var t = document.createElement("div");
+  t.className = "msg ai typing"; t.innerHTML = "<i></i><i></i><i></i>";
+  chat.appendChild(t); chat.scrollTop = chat.scrollHeight;
+  setTimeout(function() { t.remove(); bubble(text, "ai"); if (cb) cb(); },
+             600 + Math.min(text.length * 12, 1400));
+}
+var left = S.qa.length, auto = null;
+function askQA(btn, p) {
+  clearTimeout(auto); if (btn) btn.remove(); bubble(p.q, "me");
+  aiSay(p.a, function() {
+    if (p.close && --left <= 0) setTimeout(function() { aiSay(S.closing); }, 700);
+  });
+}
+function addChip(label, p) {
+  var b = document.createElement("button");
+  b.textContent = label;
+  b.onclick = function() { askQA(b, p); };
+  chips.appendChild(b);
+}
+// Чипсы РЕАЛЬНЫХ услуг клиента (из прайса сайта) — демо явно «под них»
+var ALLQA = [];
+(S.services || []).slice(0, 4).forEach(function(sv) {
+  var q = "Сколько стоит: " + sv.name + "?";
+  var a = sv.price
+    ? (sv.name + " — " + sv.price + ". Запишу на удобное время: есть окно сегодня "
+       + "вечером. Подсказать ближайшие?")
+    : ("По услуге «" + sv.name + "» подберу время и пришлю точную цену сюда в чат. "
+       + "Записать вас?");
+  var p = { q: q, a: a };
+  ALLQA.push(p);
+  addChip(sv.name + (sv.price ? " · " + sv.price : ""), p);
+});
+S.qa.forEach(function(p) { p.close = true; ALLQA.push(p); addChip(p.q, p); });
+// Свободный ввод отвечает вживую: локальный матчер по вопросам/услугам + intent
+var inp = document.getElementById("inp"), typed = 0;
+var FREE = [
+  "Уточните вопрос — подскажу по услугам, ценам, адресу или записи 👇 В рабочей версии я отвечаю на любой вопрос по вашим реальным данным.",
+  "Здесь я отвечаю на типовые вопросы клиентов; рабочая версия обучается на вашем прайсе и расписании и не пропустит ни одного.",
+];
+var INTENTS = [
+  { t: "price", k: ["цена", "сколько", "стоит", "стоим", "прайс", "почем", "рубл", "деньг"] },
+  { t: "book",  k: ["запис", "свобод", "когда", "врем", "окно", "брон", "прийти", "попаст",
+                    "очеред", "сегодня", "завтра", "вечер", "утро"] },
+  { t: "addr",  k: ["где", "адрес", "добрат", "находит", "доехать", "карт", "район", "метро"] },
+  { t: "hours", k: ["час", "работает", "режим", "открыт", "скольк", "график", "выходн"] },
+  { t: "resched", k: ["перенес", "отмен", "сдвин", "отложить", "поменять"] }
+];
+var INTENT_A = {
+  price: "Назовите услугу — пришлю точную цену прямо сюда и сразу подберу свободное время.",
+  book:  "Конечно, запишу! Есть окно сегодня вечером и завтра днём — что удобнее?",
+  addr:  "Пришлю точный адрес и как удобнее добраться. Заодно забронировать вам время?",
+  hours: "Я на связи круглосуточно и записываю на любое свободное окно. Подсказать ближайшее?",
+  resched: "Перенесу без проблем — назовите имя или телефон, найду запись и предложу новые слоты."
+};
+function norm(s) { return (s || "").toLowerCase().replace(/ё/g, "е"); }
+function words(s) { return norm(s).split(/[^a-zа-я0-9]+/).filter(function (w) { return w.length >= 4; }); }
+function bestQA(text) {
+  var tw = words(text), best = null, bs = 0;
+  ALLQA.forEach(function (p) {
+    var qw = words(p.q), sc = 0;
+    tw.forEach(function (w) { if (qw.indexOf(w) >= 0) sc++; });
+    if (sc > bs) { bs = sc; best = p; }
+  });
+  return bs >= 1 ? best : null;
+}
+function intentOf(text) {
+  var n = " " + norm(text) + " ";
+  for (var i = 0; i < INTENTS.length; i++)
+    for (var j = 0; j < INTENTS[i].k.length; j++)
+      if (n.indexOf(INTENTS[i].k[j]) >= 0) return INTENTS[i].t;
+  return "";
+}
+function glowChips() {
+  chips.querySelectorAll("button").forEach(function (b) {
+    b.classList.add("glow");
+    setTimeout(function () { b.classList.remove("glow"); }, 2600);
+  });
+}
+function freeAsk() {
+  var text = inp.value.trim();
+  if (!text) return;
+  inp.value = ""; clearTimeout(auto); bubble(text, "me");
+  var p = bestQA(text);
+  if (p) { aiSay(p.a); return; }
+  var it = intentOf(text);
+  if (it) { aiSay(INTENT_A[it]); return; }
+  aiSay(FREE[Math.min(typed++, FREE.length - 1)], glowChips);
+}
+document.getElementById("send").onclick = freeAsk;
+inp.addEventListener("keydown", function (e) { if (e.key === "Enter") freeAsk(); });
+aiSay(S.greeting, function() {
+  auto = setTimeout(function() {   // гость не кликает — показываем первый вопрос сами
+    var b = chips.querySelector("button");
+    if (b) b.click();
+  }, 3500);
+});
+</script>
+</body>
+</html>
